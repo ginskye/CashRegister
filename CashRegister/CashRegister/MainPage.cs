@@ -7,9 +7,11 @@ namespace CashRegister
 {
     public class MainPage : ContentPage
         {
-        Entry totalAmount;
+        Entry price;
+        Entry paid;
         Button makeChange;
-        Entry totalChange;
+        string totalChange;
+        Editor finalChange;
 
         public MainPage()
         {
@@ -18,10 +20,20 @@ namespace CashRegister
 
             panel.Children.Add(new Label
             {
-                Text = "Enter a total amount: "
+                Text = "Enter the price for item purchased: "
             });
 
-            panel.Children.Add(totalAmount = new Entry
+            panel.Children.Add(price = new Entry
+            {
+
+            });
+
+            panel.Children.Add(new Label
+            {
+                Text = "Enter the amount paid: "
+            });
+
+            panel.Children.Add(paid = new Entry
             {
 
             });
@@ -31,11 +43,24 @@ namespace CashRegister
                 Text = "Calculate Change"
             });
 
-            panel.Children.Add(totalChange = new Entry
+            panel.Children.Add(finalChange = new Editor
             {
-
-            });
+                AutoSize = EditorAutoSizeOption.TextChanges
+            }) ;
+            
+            makeChange.Clicked += OnCalc;
             this.Content = panel;
+        }
+        private void OnCalc(object sender, EventArgs e)
+        {
+            double amount = Convert.ToDouble(price.Text);
+            double paiddouble = Convert.ToDouble(paid.Text);
+            totalChange = CashRegister.ChangeCalculate.CalculateCh(amount, paiddouble);
+
+            if (!string.IsNullOrEmpty(totalChange))
+            {
+                finalChange.Text = totalChange.ToString();
+            }
         }
     }
 }
