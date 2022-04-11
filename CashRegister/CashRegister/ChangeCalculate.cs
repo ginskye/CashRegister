@@ -6,7 +6,7 @@ namespace CashRegister
 {
     public static class ChangeCalculate
     {
-        public static string CalculateCh(double num, double paid)
+        public static string CalculateCh(decimal num, decimal paid)
         {
             string result = "";
             int hundreds = 0;
@@ -20,7 +20,7 @@ namespace CashRegister
             int nickels = 0;
             int pennies = 0;
             decimal change = Convert.ToDecimal(paid - num);
-            change = Math.Round(change);
+            //change = Math.Round(change);
 
             while (change >= 100)
             {
@@ -73,7 +73,8 @@ namespace CashRegister
                 pennies = pennies + 1;
                 change = change - .01m;
             }
-            result = $"Your change is {hundreds} hundreds, {fifties} fifties, {twenties} twenties, {tens} tens, {fives} fives, and {ones} ones";
+            result = $"Your change is {hundreds} hundreds, {fifties} fifties, {twenties} twenties, {tens} tens, {fives} fives, and {ones} ones \n The coin values are {quarters} quarters, {dimes} dimes, {nickels} nickels, and {pennies} pennies";
+            //change this to a List with keys variable names, and values values
             return result;
             
              

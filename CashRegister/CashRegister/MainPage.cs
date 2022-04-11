@@ -17,6 +17,7 @@ namespace CashRegister
         {
             StackLayout panel = new StackLayout();
             panel.Orientation = StackOrientation.Vertical;
+            BackgroundColor = Color.GreenYellow;
 
             panel.Children.Add(new Label
             {
@@ -53,8 +54,8 @@ namespace CashRegister
         }
         private void OnCalc(object sender, EventArgs e)
         {
-            double amount = Convert.ToDouble(price.Text);
-            double paiddouble = Convert.ToDouble(paid.Text);
+            decimal amount = Convert.ToDecimal(price.Text);
+            decimal paiddouble = Convert.ToDecimal(paid.Text);
             totalChange = CashRegister.ChangeCalculate.CalculateCh(amount, paiddouble);
 
             if (!string.IsNullOrEmpty(totalChange))
