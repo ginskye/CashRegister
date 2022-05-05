@@ -73,6 +73,7 @@ namespace CashRegister
                 pennies = pennies + 1;
                 change = change - .01m;
             }
+            //if keeping this while filter, could filter further to check for singlular numbers, but probably best to do a List sort of some sort
             result = $"Your change is {hundreds} hundreds, {fifties} fifties, {twenties} twenties, {tens} tens, {fives} fives, and {ones} ones \n The coin values are {quarters} quarters, {dimes} dimes, {nickels} nickels, and {pennies} pennies";
             //change this to a List with keys variable names, and values values
             return result;

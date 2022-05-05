@@ -17,7 +17,7 @@ namespace CashRegister
         {
             StackLayout panel = new StackLayout();
             panel.Orientation = StackOrientation.Vertical;
-            BackgroundColor = Color.GreenYellow;
+            BackgroundColor = Color.SlateBlue;
 
             panel.Children.Add(new Label
             {
@@ -49,14 +49,14 @@ namespace CashRegister
                 AutoSize = EditorAutoSizeOption.TextChanges
             }) ;
             
-            makeChange.Clicked += OnCalc;
+            makeChange.Clicked += OnCalc; //calls OnCalc function when clicked, which outputs to the finalChange panel
             this.Content = panel;
         }
         private void OnCalc(object sender, EventArgs e)
         {
-            decimal amount = Convert.ToDecimal(price.Text);
-            decimal paiddouble = Convert.ToDecimal(paid.Text);
-            totalChange = CashRegister.ChangeCalculate.CalculateCh(amount, paiddouble);
+            decimal amount = Convert.ToDecimal(price.Text); //from panel.Children.Add(price
+            decimal paiddouble = Convert.ToDecimal(paid.Text); //panel.Children.Add(paid
+            totalChange = CashRegister.ChangeCalculate.CalculateCh(amount, paiddouble); //variable assigned to name of project,classname,functionname(passeditems)
 
             if (!string.IsNullOrEmpty(totalChange))
             {
